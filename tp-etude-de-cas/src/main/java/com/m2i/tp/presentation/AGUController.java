@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.m2i.tp.dao.entity.User;
 import com.m2i.tp.service.IAGUService;
@@ -18,7 +19,18 @@ public class AGUController {
 	@Resource(name="aguService")
 	private IAGUService aguService;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+	public ModelAndView welcomePage() {
+
+		ModelAndView model = new ModelAndView();
+		model.addObject("title", "Page d'accueil");
+		model.addObject("message", "Bienvenue sur la page d'accueil");
+		model.setViewName("accueil");
+		return model;
+
+	}
+	
+	@RequestMapping(value = "/admin/users", method = RequestMethod.GET)
 	public String products(Locale locale, Model model) {
 		model.addAttribute("user", new User());
 		model.addAttribute("users", aguService.findAllUsers());

@@ -9,6 +9,6 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<a href="<c:url value='/j_spring_security_check'/>">SE CONNECTER</a>
 </body>
 </html>

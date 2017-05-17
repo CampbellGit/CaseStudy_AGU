@@ -20,6 +20,12 @@
 					<th>Mot de passe:</th>
 					<td><f:input path="password" /></td>
 				</tr>
+				
+				<tr>
+					<th>Role :</th>
+					<td><f:input path="rolename" /></td>
+				</tr>
+				
 
 				</tr>
 				<f:hidden path="id"/>
@@ -34,11 +40,13 @@
 			<tr>
 				<th>NOM</th>
 				<th>MOT DE PASSE</th>
+				<th>ROLE</th>
 			</tr>
 			<c:forEach items="${users}" var="u">
 				<tr>
 					<td>${u.username}</td>
 					<td>${u.password}</td>
+					<td>${u.rolename}</td>				
 					<td><a href="deleteUser?id=${u.id}">Supprimer</a></td>
 					<td><a href="editUser?id=${u.id}">Modifier</a></td>
 				</tr>

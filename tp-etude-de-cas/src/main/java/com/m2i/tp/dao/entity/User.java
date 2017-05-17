@@ -16,6 +16,8 @@ public class User {
 	private String username;
 
 	private String password;
+	
+	private String rolename;
 
 	@Id
 	@Column(name="id", unique=true, nullable=false)
@@ -42,6 +44,22 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	@Column(name="rolename")
+	public String getRolename() {
+		return rolename;
+	}
+
+	public void setRolename(String rolename) {
+		this.rolename = rolename;
+	}
+	
+
+	public User(String username, String password, String rolename) {
+		this.username = username;
+		this.password = password;
+		this.rolename = rolename;
 	}
 
 	public User(String username, String password) {

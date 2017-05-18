@@ -1,14 +1,21 @@
 package com.m2i.tp.dao.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_user")
+@Table(name="T_USER")
 public class User {
 
 	private int id;
@@ -17,12 +24,12 @@ public class User {
 
 	private String password;
 	
-	private String rolename;
-	private boolean enabled;
+	private Set<Role> role_user = new HashSet<Role>(0);
 	
+	private boolean enabled;
 
 	@Id
-	@Column(name="id", unique=true, nullable=false)
+	@Column(name="USER_ID", unique=true, nullable=false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getId() {
 		return id;
@@ -31,7 +38,7 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-	@Column(name="username")
+	@Column(name="USERNAME")
 	public String getUsername() {
 		return username;
 	}
@@ -39,7 +46,7 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	@Column(name="password")
+	@Column(name="PASSWORD")
 	public String getPassword() {
 		return password;
 	}
@@ -48,29 +55,26 @@ public class User {
 		this.password = password;
 	}
 	
-	@Column(name="rolename")
-	public String getRolename() {
-		return rolename;
-	}
-
-	public void setRolename(String rolename) {
-		this.rolename = rolename;
-	}
-
 	
-	@Column(name="enabled")
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "T_USER_ROLES", 
+	joinColumns = { @JoinColumn(name = "USER_ID") }, 
+	inverseJoinColumns = { @JoinColumn(name = "ROLE_ID") })
+	public Set<Role> getRole_user() {
+		return role_user;
+	}
+
+	public void setRole_user(Set<Role> role_user) {
+		this.role_user = role_user;
+	}
+
+	@Column(name="ENABLED")
 	public boolean isEnabled() {
 		return enabled;
 	}
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
-	}
-
-	public User(String username, String password, String rolename) {
-		this.username = username;
-		this.password = password;
-		this.rolename = rolename;
 	}
 
 	public User(String username, String password) {
@@ -81,11 +85,5 @@ public class User {
 	public User() {
 	}
 
-	public User(String username, String password, String rolename, boolean enabled) {
-		this.username = username;
-		this.password = password;
-		this.rolename = rolename;
-		this.enabled = enabled;
-	}
 	
 }

@@ -18,6 +18,8 @@ public class User {
 	private String password;
 	
 	private String rolename;
+	private boolean enabled;
+	
 
 	@Id
 	@Column(name="id", unique=true, nullable=false)
@@ -54,7 +56,16 @@ public class User {
 	public void setRolename(String rolename) {
 		this.rolename = rolename;
 	}
+
 	
+	@Column(name="enabled")
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
 	public User(String username, String password, String rolename) {
 		this.username = username;
@@ -70,4 +81,11 @@ public class User {
 	public User() {
 	}
 
+	public User(String username, String password, String rolename, boolean enabled) {
+		this.username = username;
+		this.password = password;
+		this.rolename = rolename;
+		this.enabled = enabled;
+	}
+	
 }

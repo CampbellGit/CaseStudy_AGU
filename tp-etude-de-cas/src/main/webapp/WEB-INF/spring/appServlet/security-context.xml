@@ -19,7 +19,7 @@
 	
 <!-- expressiions 2 -->
 	<http auto-config="true" use-expressions="true">
-		<intercept-url pattern="/admin/*"
+		<intercept-url pattern="/*"
 	access="hasAnyRole('ROLE_ADMIN','ROLE_MODERATOR')" />
 	
 	</http>
@@ -43,13 +43,21 @@
 <!-- 	</authentication-manager> -->
 
 <!-- 2 -->
+<!-- 	<authentication-manager> -->
+<!-- 		<authentication-provider> -->
+<!-- 			<user-service> -->
+<!-- 				<user name="admin" -->
+<!-- 					password="admin" -->
+<!-- 					authorities="ROLE_ADMIN" /> -->
+<!-- 			</user-service> -->
+<!-- 		</authentication-provider> -->
+<!-- 	</authentication-manager> -->
 	<authentication-manager>
 		<authentication-provider>
-			<user-service>
-				<user name="admin"
-					password="admin"
-					authorities="ROLE_ADMIN" />
-			</user-service>
+			<jdbc-user-service data-source-ref="datasource"
+				users-by-username-query="select username,password, enabled from t_user where username=?"
+				authorities-by-username-query="select username, rolename from t_user where username=? " />
+
 		</authentication-provider>
 	</authentication-manager>
 

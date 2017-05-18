@@ -19,20 +19,20 @@ public class AGUController {
 	@Resource(name="aguService")
 	private IAGUService aguService;
 	
-	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-	public String home() {
-		return "login";
-	}
+//	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+//	public String home() {
+//		return "login";
+//	}
 
 	
-	@RequestMapping(value = "/admin/users", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String products(Locale locale, Model model) {
 		model.addAttribute("user", new User());
 		model.addAttribute("users", aguService.findAllUsers());
 		return "users";
 	}
 	
-	@RequestMapping(value = "/admin/saveUser")
+	@RequestMapping(value = "/saveUser")
 	public String saveUser(User u, Model model) {
 		// if(p.getId() == 0)
 		System.out.println(u);
@@ -46,7 +46,7 @@ public class AGUController {
 		return "users";
 	}
 	
-	@RequestMapping(value = "/admin/deleteUser")
+	@RequestMapping(value = "/deleteUser")
 	public String delete(int id, Model model) {
 		User u = new User();
 
@@ -59,7 +59,7 @@ public class AGUController {
 		return "users";
 	}
 	
-	@RequestMapping(value = "/admin/editUser")
+	@RequestMapping(value = "/editUser")
 	public String edit(int id, Model model) {
 		User u = aguService.findUserById(id);
 		model.addAttribute("user", u);

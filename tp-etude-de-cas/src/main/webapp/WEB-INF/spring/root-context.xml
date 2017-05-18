@@ -12,9 +12,22 @@
 
 	<!-- Déclaration du PropertyPlaceholderConfigurer -->
 
-
-	<context:component-scan base-package="com.m2i.tp" />
-
+	<beans:bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<beans:property name="locations">
+			<beans:list>
+				<beans:value>classpath:db.properties</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+    
+	<beans:bean id="datasource" destroy-method="close"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<beans:property name="driverClassName" value="${db.driver}" />
+		<beans:property name="url" value="${db.url}" />
+		<beans:property name="username" value="${db.login}" />
+		<beans:property name="password" value="${db.password}" />
+	</beans:bean>
 
 
 </beans:beans>

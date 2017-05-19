@@ -23,7 +23,7 @@ public class Role {
 	public void setRole_id(int role_id) {
 		this.role_id = role_id;
 	}
-	@Column(name="ROLE_NAME")
+	@Column(name="ROLE_NAME", nullable = false)
 	public String getRole_name() {
 		return role_name;
 	}
@@ -39,3 +39,5 @@ public class Role {
 	public Role() {
 	}
 }
+
+//nullable = false, columnDefinition = "BOOLEAN DEFAULT false"

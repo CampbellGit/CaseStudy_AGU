@@ -55,7 +55,7 @@
 	</div>
 	
 	<div>
-		<a href="<c:url value='/j_spring_security_logout'/>">Quitter</a>
+		<a href="<c:url value='/logout'/>">Quitter</a>
 	</div>
 </body>
 </html>

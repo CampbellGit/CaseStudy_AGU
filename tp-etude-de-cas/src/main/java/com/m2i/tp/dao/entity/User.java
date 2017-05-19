@@ -68,7 +68,7 @@ public class User {
 		this.role_user = role_user;
 	}
 
-	@Column(name="ENABLED")
+	@Column(name="ENABLED", nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
 	public boolean isEnabled() {
 		return enabled;
 	}

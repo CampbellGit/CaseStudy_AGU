@@ -71,5 +71,8 @@ public class AGUController {
 	public String login(){
 	return "login";
 	}
-	
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	public String accueil() {
+//		return "accueil";
+//	}
 }

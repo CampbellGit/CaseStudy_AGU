@@ -53,5 +53,9 @@
 			</c:forEach>
 		</table>
 	</div>
+	
+	<div>
+		<a href="<c:url value='/j_spring_security_logout'/>">Quitter</a>
+	</div>
 </body>
 </html>

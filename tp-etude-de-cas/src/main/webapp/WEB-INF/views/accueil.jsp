@@ -2,12 +2,12 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>Accueil</title>
 </head>
 <body>
 <h1>
-	HOME   
+	Accueil 
 </h1>
-<a href="<c:url value='/j_spring_security_check'/>">LOGIN</a>
+<a href="<c:url value='/login'/>">Se connecter</a>
 </body>
 </html>

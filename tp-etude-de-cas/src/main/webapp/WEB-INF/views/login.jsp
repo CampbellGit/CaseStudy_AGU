@@ -11,14 +11,14 @@
 <form action="${loginUrl}" method="post" class="form-horizontal">
 		<table>
 			<tr>
-				<th colspan="2">Test Login customisé</th>
+				<th colspan="2">Login custom</th>
 			</tr>
 			<tr>
 				<td>Login</td>
 				<td><input type="text" name="username"></td>
 			</tr>
 			<tr>
-				<td>Pass word</td>
+				<td>Mot de passe</td>
 				<td><input type="password" name="password"></td>
 			</tr>
 			<tr>
